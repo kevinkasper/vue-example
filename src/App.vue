@@ -1,29 +1,47 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+    <div id="app">
+        <div class="card-container">
+            <card></card>
+            <card class="c-card--center"></card>
+            <card class="c-card--right"></card>
+            <card class="c-card--wide"></card>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+    import Card from './components/card.vue';
+    import { Component } from 'vue-property-decorator';
+    import Vue from 'vue';
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
-export default class App extends Vue {}
+    @Component({
+        components: {
+            Card,
+        },
+        name: 'app',
+    })
+    export default class App extends Vue {
+
+    }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    @import './assets/scss/bootstrap.scss';
+
+    #app {
+        height: 100vh;
+    }
+
+    .card-container {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 100%;
+        justify-content: center;
+
+        > .c-card--wide {
+            flex: 1 1 100%;
+        }
+    }
 </style>
